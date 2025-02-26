@@ -1,8 +1,10 @@
 package org.example;
 
+import org.example.employees.EmployeesRepository;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello");
-        // new VisitorsRepository().blank();
+        new EmployeesRepository().blank();
     }
 }
