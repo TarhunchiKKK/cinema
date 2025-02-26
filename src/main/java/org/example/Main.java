@@ -24,7 +24,10 @@ public class Main {
             }
 
             IConsoleDriver driver = consoleDrivers.get(choice);
-            driver.start();
+
+            if (driver != null) {
+                driver.start();
+            }
         }
     }
 
