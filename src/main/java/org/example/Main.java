@@ -1,10 +1,10 @@
 package org.example;
 
-import org.example.seanses.SeansesRepository;
+import org.example.halls.HallsRepository;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello");
-        new SeansesRepository().createBlank();
+        // new HallsRepository().blank();
     }
 }
