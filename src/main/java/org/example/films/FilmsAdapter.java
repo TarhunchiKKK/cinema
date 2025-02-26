@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.example.shared.interfaces.IAdapter;
 
 public class FilmsAdapter implements IAdapter<Film> {
