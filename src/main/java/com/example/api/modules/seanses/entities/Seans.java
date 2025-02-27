@@ -1,12 +1,12 @@
-package com.example.api.modules.seanses;
+package com.example.api.modules.seanses.entities;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import com.example.api.modules.employees.Employee;
-import com.example.api.modules.films.Film;
-import com.example.api.modules.halls.Hall;
-import com.example.api.modules.visitors.Visitor;
+import com.example.api.modules.employees.entities.Employee;
+import com.example.api.modules.films.entities.Film;
+import com.example.api.modules.halls.entities.Hall;
+import com.example.api.modules.visitors.entities.Visitor;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

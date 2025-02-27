@@ -1,5 +1,7 @@
-package com.example.api.modules.employees;
+package com.example.api.modules.employees.services;
 
+import com.example.api.modules.employees.entities.Employee;
+import com.example.api.modules.employees.repositories.EmployeesRepository;
 import org.springframework.stereotype.Service;
 
 import com.example.api.modules.employees.dtos.CreateEmployeeRequest;

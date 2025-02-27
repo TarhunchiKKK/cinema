@@ -1,4 +1,4 @@
-package com.example.api.modules.films;
+package com.example.api.modules.films.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,4 +29,10 @@ public class Film {
 
     @Column(name = "country")
     private String country;
+
+    public Film(String title, Integer year, String country) {
+        this.title = title;
+        this.year = year;
+        this.country = country;
+    }
 }

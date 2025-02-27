@@ -1,9 +1,9 @@
-package com.example.api.modules.employees;
+package com.example.api.modules.employees.entities;
 
 import java.util.HashSet;
 import java.util.Set;
 import com.example.api.modules.auth.entties.Profile;
-import com.example.api.modules.seanses.Seans;
+import com.example.api.modules.seanses.entities.Seans;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

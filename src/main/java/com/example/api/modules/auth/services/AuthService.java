@@ -12,9 +12,9 @@ import com.example.api.modules.auth.dtos.SignUpRequest;
 import com.example.api.modules.auth.dtos.SignUpResponse;
 import com.example.api.modules.auth.dtos.VisitorSignUpRequest;
 import com.example.api.modules.auth.entties.Profile;
-import com.example.api.modules.employees.EmployeesService;
+import com.example.api.modules.employees.services.EmployeesService;
 import com.example.api.modules.employees.dtos.CreateEmployeeRequest;
-import com.example.api.modules.visitors.VisitorsService;
+import com.example.api.modules.visitors.services.VisitorsService;
 import com.example.api.modules.visitors.dtos.CreateVisitorRequest;
 
 @Service
