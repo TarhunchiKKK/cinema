@@ -88,7 +88,7 @@ ALTER TABLE IF EXISTS public.visitors
 
 
 ALTER TABLE IF EXISTS public.seanses
-    ADD FOREIGN KEY (firm_id)
+    ADD FOREIGN KEY (film_id)
     REFERENCES public.films (id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION

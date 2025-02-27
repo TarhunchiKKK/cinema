@@ -7,7 +7,6 @@ import com.example.api.modules.employees.entities.Employee;
 import com.example.api.modules.films.entities.Film;
 import com.example.api.modules.halls.entities.Hall;
 import com.example.api.modules.visitors.entities.Visitor;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -50,11 +49,11 @@ public class Seans {
     @JoinColumn(name = "hall_id")
     private Hall hall;
 
-    @ManyToMany(cascade = CascadeType.DETACH)
+    @ManyToMany()
     @JoinTable(name = "seanses_visitors", joinColumns = @JoinColumn(name = "seans_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "visitor_id", referencedColumnName = "id"))
     private Set<Visitor> visitors = new HashSet<Visitor>();
 
-    @ManyToMany(cascade = CascadeType.DETACH)
+    @ManyToMany()
     @JoinTable(name = "seanses_employees", joinColumns = @JoinColumn(name = "seans_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"))
     private Set<Employee> employees = new HashSet<Employee>();
 

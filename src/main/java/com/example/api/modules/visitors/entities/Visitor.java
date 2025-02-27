@@ -46,7 +46,7 @@ public class Visitor {
         this.profile = profile;
     }
 
-    @ManyToMany(cascade = CascadeType.DETACH)
+    @ManyToMany()
     @JoinTable(name = "seanses_visitors", joinColumns = @JoinColumn(name = "visitor_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "seans_id", referencedColumnName = "id"))
     private Set<Seans> seanses = new HashSet<Seans>();
 }
