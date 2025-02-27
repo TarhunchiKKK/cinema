@@ -2,7 +2,6 @@ package com.example.api.modules.halls;
 
 import java.util.HashMap;
 import java.util.List;
-
 import com.example.api.modules.halls.entities.Hall;
 import com.example.api.modules.halls.services.HallsService;
 import org.springframework.http.HttpStatus;
@@ -15,8 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.api.modules.halls.dtos.CreateHallRequest;
+import com.example.api.modules.halls.dtos.SearchHallsRequest;
 import com.example.api.modules.halls.dtos.UpdateHallRequest;
 import com.example.api.shared.utils.ErrorsCollector;
 import jakarta.validation.Valid;
@@ -39,8 +40,9 @@ public class HallsController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Hall>> findAll() {
-        return new ResponseEntity<List<Hall>>(this.hallsService.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<Hall>> findAll(@RequestParam(value = "type", required = false) String type) {
+        SearchHallsRequest request = new SearchHallsRequest(type);
+        return new ResponseEntity<List<Hall>>(this.hallsService.findAll(request), HttpStatus.OK);
     }
 
     @PatchMapping("/{id}")

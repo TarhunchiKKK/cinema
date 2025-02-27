@@ -4,9 +4,12 @@ import java.util.List;
 
 import com.example.api.modules.halls.entities.Hall;
 import com.example.api.modules.halls.repositories.HallsRepository;
+import com.example.api.modules.halls.utils.SearchHallsQueryBuilder;
+
 import org.springframework.stereotype.Service;
 
 import com.example.api.modules.halls.dtos.CreateHallRequest;
+import com.example.api.modules.halls.dtos.SearchHallsRequest;
 import com.example.api.modules.halls.dtos.UpdateHallRequest;
 
 import lombok.RequiredArgsConstructor;
@@ -21,8 +24,9 @@ public class HallsService {
                 new Hall(request.getType(), request.getSeatsCount()));
     }
 
-    public List<Hall> findAll() {
-        return this.hallsRepository.findAll();
+    public List<Hall> findAll(SearchHallsRequest request) {
+        SearchHallsQueryBuilder queryBuilder = new SearchHallsQueryBuilder(request);
+        return this.hallsRepository.findAll(queryBuilder.getExample());
     }
 
     public void update(Long id, UpdateHallRequest request) {
