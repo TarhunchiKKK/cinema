@@ -1,12 +1,13 @@
 package com.example.api.modules.films.services;
 
 import java.util.List;
-
 import com.example.api.modules.films.entities.Film;
 import com.example.api.modules.films.repositories.FilmsRepository;
+import com.example.api.modules.films.utils.SearchFilmsQueryBuilder;
+import com.example.api.shared.interfaces.IQueryBuilder;
 import org.springframework.stereotype.Service;
-
 import com.example.api.modules.films.dtos.CreateFilmRequest;
+import com.example.api.modules.films.dtos.SearchFilmsRequest;
 import com.example.api.modules.films.dtos.UpdateFilmRequest;
 
 import lombok.RequiredArgsConstructor;
@@ -21,8 +22,9 @@ public class FilmsService {
                 new Film(request.getTitle(), request.getYear(), request.getCountry()));
     }
 
-    public List<Film> findAll() {
-        return this.filmsRepository.findAll();
+    public List<Film> findAll(SearchFilmsRequest request) {
+        IQueryBuilder<Film> queryBuilder = new SearchFilmsQueryBuilder(request);
+        return this.filmsRepository.findAll(queryBuilder.getExample());
     }
 
     public void update(Long id, UpdateFilmRequest request) {

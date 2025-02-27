@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.api.modules.films.dtos.CreateFilmRequest;
+import com.example.api.modules.films.dtos.SearchFilmsRequest;
 import com.example.api.modules.films.dtos.UpdateFilmRequest;
 import com.example.api.shared.utils.ErrorsCollector;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -39,8 +41,9 @@ public class FilmsController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Film>> findAll() {
-        return new ResponseEntity<List<Film>>(this.filmsService.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<Film>> findAll(@RequestParam(value = "country", required = false) String country) {
+        SearchFilmsRequest request = new SearchFilmsRequest(country);
+        return new ResponseEntity<List<Film>>(this.filmsService.findAll(request), HttpStatus.OK);
     }
 
     @PatchMapping("/{id}")

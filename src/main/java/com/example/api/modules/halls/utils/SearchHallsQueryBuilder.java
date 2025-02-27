@@ -4,8 +4,9 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import com.example.api.modules.halls.dtos.SearchHallsRequest;
 import com.example.api.modules.halls.entities.Hall;
+import com.example.api.shared.interfaces.IQueryBuilder;
 
-public class SearchHallsQueryBuilder {
+public class SearchHallsQueryBuilder implements IQueryBuilder<Hall> {
     private SearchHallsRequest request;
 
     private Hall probe = new Hall();

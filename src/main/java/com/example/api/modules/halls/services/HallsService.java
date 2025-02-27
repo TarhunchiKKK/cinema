@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.api.modules.halls.entities.Hall;
 import com.example.api.modules.halls.repositories.HallsRepository;
 import com.example.api.modules.halls.utils.SearchHallsQueryBuilder;
+import com.example.api.shared.interfaces.IQueryBuilder;
 
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class HallsService {
     }
 
     public List<Hall> findAll(SearchHallsRequest request) {
-        SearchHallsQueryBuilder queryBuilder = new SearchHallsQueryBuilder(request);
+        IQueryBuilder<Hall> queryBuilder = new SearchHallsQueryBuilder(request);
         return this.hallsRepository.findAll(queryBuilder.getExample());
     }
 
