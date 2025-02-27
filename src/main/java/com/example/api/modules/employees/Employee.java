@@ -43,6 +43,13 @@ public class Employee {
     @JoinColumn(name = "profile_id")
     private Profile profile;
 
+    public Employee(String fio, String post, Float experience, Profile profile) {
+        this.fio = fio;
+        this.post = post;
+        this.experience = experience;
+        this.profile = profile;
+    }
+
     @ManyToMany(cascade = CascadeType.DETACH)
     @JoinTable(name = "seanses_employees", joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "seans_id", referencedColumnName = "id"))
     private Set<Seans> seanses = new HashSet<Seans>();

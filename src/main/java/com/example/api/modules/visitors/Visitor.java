@@ -40,6 +40,12 @@ public class Visitor {
     @JoinColumn(name = "profile_id")
     private Profile profile;
 
+    public Visitor(String fio, Integer age, Profile profile) {
+        this.fio = fio;
+        this.age = age;
+        this.profile = profile;
+    }
+
     @ManyToMany(cascade = CascadeType.DETACH)
     @JoinTable(name = "seanses_visitors", joinColumns = @JoinColumn(name = "visitor_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "seans_id", referencedColumnName = "id"))
     private Set<Seans> seanses = new HashSet<Seans>();
