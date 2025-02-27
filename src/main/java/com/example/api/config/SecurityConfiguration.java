@@ -41,7 +41,9 @@ public class SecurityConfiguration {
                 }))
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/auth/**").permitAll()
-                        // .requestMatchers("/endpoint", "/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/halls/**").hasRole("EMPLOYEE")
+                        .requestMatchers("/employees/**").hasRole("EMPLOYEE")
+                        .requestMatchers("/visitors/**").hasRole("VISITOR")
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider())

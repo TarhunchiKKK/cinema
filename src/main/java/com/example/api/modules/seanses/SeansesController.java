@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -27,6 +28,7 @@ public class SeansesController {
     private final SeansesService seansesService;
 
     @PostMapping
+    @PreAuthorize("hasRole('EMPLOYEE')")
     public ResponseEntity<?> create(@RequestBody @Valid CreateSeansRequest request, BindingResult bindingResult) {
         ErrorsCollector errorsCollector = new ErrorsCollector(bindingResult);
         if (errorsCollector.hasErrors()) {
@@ -37,6 +39,7 @@ public class SeansesController {
     }
 
     @PatchMapping("/{id}")
+    @PreAuthorize("hasRole('EMPLOYEE')")
     public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody @Valid UpdateSeansRequest request,
             BindingResult bindingResult) {
         ErrorsCollector errorsCollector = new ErrorsCollector(bindingResult);
@@ -54,11 +57,13 @@ public class SeansesController {
     }
 
     @GetMapping("/visitor/{id}")
+    @PreAuthorize("hasRole('VISITOR')")
     public ResponseEntity<List<Seans>> findAllByVisitorId(@PathVariable("id") Long id) {
         return new ResponseEntity<List<Seans>>(this.seansesService.findAllByVisitorId(id), HttpStatus.OK);
     }
 
     @GetMapping("/employee/{id}")
+    @PreAuthorize("hasRole('EMPLOYEE')")
     public ResponseEntity<List<Seans>> findAllByEmployeeId(@PathVariable("id") Long id) {
         return new ResponseEntity<List<Seans>>(this.seansesService.findAllByEmployeeId(id), HttpStatus.OK);
     }

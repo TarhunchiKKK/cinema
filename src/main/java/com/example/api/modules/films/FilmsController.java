@@ -7,6 +7,7 @@ import com.example.api.modules.films.entities.Film;
 import com.example.api.modules.films.services.FilmsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,7 @@ public class FilmsController {
     private final FilmsService filmsService;
 
     @PostMapping
+    @PreAuthorize("hasRole('EMPLOYEE')")
     public ResponseEntity<?> create(@RequestBody @Valid CreateFilmRequest request, BindingResult bindingResult) {
         ErrorsCollector errorsCollector = new ErrorsCollector(bindingResult);
         if (errorsCollector.hasErrors()) {
@@ -47,6 +49,7 @@ public class FilmsController {
     }
 
     @PatchMapping("/{id}")
+    @PreAuthorize("hasRole('EMPLOYEE')")
     public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody @Valid UpdateFilmRequest request,
             BindingResult bindingResult) {
         ErrorsCollector errorsCollector = new ErrorsCollector(bindingResult);
@@ -59,6 +62,7 @@ public class FilmsController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('EMPLOYEE')")
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
         this.filmsService.delete(id);
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
