@@ -38,6 +38,10 @@ public class SeansesService {
                 new Seans(date, request.getPrice(), request.getDuration(), film, hall));
     }
 
+    public Seans findOneById(Long id) {
+        return this.seansesRepository.findById(id).orElse(null);
+    }
+
     public List<Seans> findAllByFilmId(Long id) {
         Film film = this.filmsService.findById(id);
 
