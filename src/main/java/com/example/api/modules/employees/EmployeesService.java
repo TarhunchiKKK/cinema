@@ -1,4 +1,4 @@
-package com.example.api.employees;
+package com.example.api.modules.employees;
 
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;

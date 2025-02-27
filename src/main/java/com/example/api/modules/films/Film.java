@@ -1,4 +1,4 @@
-package com.example.api.films;
+package com.example.api.modules.films;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

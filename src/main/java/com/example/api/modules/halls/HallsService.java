@@ -1,4 +1,4 @@
-package com.example.api.halls;
+package com.example.api.modules.halls;
 
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;

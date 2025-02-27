@@ -1,4 +1,4 @@
-package com.example.api.seanses;
+package com.example.api.modules.seanses;
 
 import org.springframework.stereotype.Service;
 

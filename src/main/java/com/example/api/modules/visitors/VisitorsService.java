@@ -1,4 +1,4 @@
-package com.example.api.visitors;
+package com.example.api.modules.visitors;
 
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;

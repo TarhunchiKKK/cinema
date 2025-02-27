@@ -1,8 +1,8 @@
-package com.example.api.visitors;
+package com.example.api.modules.visitors;
 
 import java.util.HashSet;
 import java.util.Set;
-import com.example.api.seanses.Seans;
+import com.example.api.modules.seanses.Seans;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
