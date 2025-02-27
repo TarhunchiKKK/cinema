@@ -2,6 +2,7 @@ package com.example.api.modules.employees;
 
 import java.util.HashSet;
 import java.util.Set;
+import com.example.api.modules.auth.entties.Profile;
 import com.example.api.modules.seanses.Seans;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,6 +38,10 @@ public class Employee {
 
     @Column(name = "experience")
     private Float experience;
+
+    @OneToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 
     @ManyToMany(cascade = CascadeType.DETACH)
     @JoinTable(name = "seanses_employees", joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "seans_id", referencedColumnName = "id"))
