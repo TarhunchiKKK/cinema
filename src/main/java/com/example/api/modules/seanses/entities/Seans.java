@@ -58,9 +58,11 @@ public class Seans {
     @JoinTable(name = "seanses_employees", joinColumns = @JoinColumn(name = "seans_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"))
     private Set<Employee> employees = new HashSet<Employee>();
 
-    public Seans(Date date, Float price, Integer duration) {
+    public Seans(Date date, Float price, Integer duration, Film film, Hall hall) {
         this.date = date;
         this.price = price;
         this.duration = duration;
+        this.film = film;
+        this.hall = hall;
     }
 }

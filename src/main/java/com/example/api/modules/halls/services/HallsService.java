@@ -1,14 +1,11 @@
 package com.example.api.modules.halls.services;
 
 import java.util.List;
-
 import com.example.api.modules.halls.entities.Hall;
 import com.example.api.modules.halls.repositories.HallsRepository;
 import com.example.api.modules.halls.utils.SearchHallsQueryBuilder;
 import com.example.api.shared.interfaces.IQueryBuilder;
-
 import org.springframework.stereotype.Service;
-
 import com.example.api.modules.halls.dtos.CreateHallRequest;
 import com.example.api.modules.halls.dtos.SearchHallsRequest;
 import com.example.api.modules.halls.dtos.UpdateHallRequest;
@@ -28,6 +25,10 @@ public class HallsService {
     public List<Hall> findAll(SearchHallsRequest request) {
         IQueryBuilder<Hall> queryBuilder = new SearchHallsQueryBuilder(request);
         return this.hallsRepository.findAll(queryBuilder.getExample());
+    }
+
+    public Hall findById(Long id) {
+        return this.hallsRepository.findById(id).orElse(null);
     }
 
     public void update(Long id, UpdateHallRequest request) {

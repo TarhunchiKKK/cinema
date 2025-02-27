@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.example.api.modules.films.dtos.CreateFilmRequest;
 import com.example.api.modules.films.dtos.SearchFilmsRequest;
 import com.example.api.modules.films.dtos.UpdateFilmRequest;
-
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -25,6 +24,10 @@ public class FilmsService {
     public List<Film> findAll(SearchFilmsRequest request) {
         IQueryBuilder<Film> queryBuilder = new SearchFilmsQueryBuilder(request);
         return this.filmsRepository.findAll(queryBuilder.getExample());
+    }
+
+    public Film findById(Long id) {
+        return this.filmsRepository.findById(id).orElse(null);
     }
 
     public void update(Long id, UpdateFilmRequest request) {
