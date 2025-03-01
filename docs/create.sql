@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS public.employees
     fio character varying(60) COLLATE pg_catalog."default" NOT NULL,
     post character varying(30) COLLATE pg_catalog."default",
     experience real,
+    profile_id integer,
     CONSTRAINT employees_pkey PRIMARY KEY (id)
 );
 
@@ -26,6 +27,7 @@ CREATE TABLE IF NOT EXISTS public.visitors
     id integer NOT NULL,
     fio character varying(60) COLLATE pg_catalog."default" NOT NULL,
     age integer NOT NULL,
+    profile_id integer,
     CONSTRAINT visitors_pkey PRIMARY KEY (id)
 );
 
@@ -59,6 +61,31 @@ CREATE TABLE IF NOT EXISTS public.halls
     seats_count integer,
     PRIMARY KEY (id)
 );
+
+CREATE TABLE IF NOT EXISTS public.profiles
+(
+    id integer NOT NULL,
+    email character varying NOT NULL,
+    password character varying NOT NULL,
+    role character varying NOT NULL,
+    PRIMARY KEY (id)
+);
+
+ALTER TABLE IF EXISTS public.employees
+    ADD FOREIGN KEY (profile_id)
+    REFERENCES public.profiles (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.visitors
+    ADD FOREIGN KEY (profile_id)
+    REFERENCES public.profiles (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
 
 ALTER TABLE IF EXISTS public.seanses
     ADD FOREIGN KEY (film_id)
