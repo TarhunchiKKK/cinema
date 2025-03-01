@@ -27,7 +27,8 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/sign-up/visitor")
-    public ResponseEntity<?> signUp(@RequestBody @Valid VisitorSignUpRequest request, BindingResult bindingResult) {
+    public ResponseEntity<?> signUpVisitor(@RequestBody @Valid VisitorSignUpRequest request,
+            BindingResult bindingResult) {
         ErrorsCollector errorsCollector = new ErrorsCollector(bindingResult);
         if (errorsCollector.hasErrors()) {
             return new ResponseEntity<HashMap<String, String>>(errorsCollector.getErrors(), HttpStatus.BAD_REQUEST);
@@ -37,7 +38,8 @@ public class AuthController {
     }
 
     @PostMapping("/sign-up/employee")
-    public ResponseEntity<?> signUp(@RequestBody @Valid EmployeeSignUpRequest request, BindingResult bindingResult) {
+    public ResponseEntity<?> signUpEmployee(@RequestBody @Valid EmployeeSignUpRequest request,
+            BindingResult bindingResult) {
         ErrorsCollector errorsCollector = new ErrorsCollector(bindingResult);
         if (errorsCollector.hasErrors()) {
             return new ResponseEntity<HashMap<String, String>>(errorsCollector.getErrors(), HttpStatus.BAD_REQUEST);

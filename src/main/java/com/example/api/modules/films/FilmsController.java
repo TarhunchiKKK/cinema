@@ -2,7 +2,6 @@ package com.example.api.modules.films;
 
 import java.util.HashMap;
 import java.util.List;
-
 import com.example.api.modules.films.entities.Film;
 import com.example.api.modules.films.services.FilmsService;
 import org.springframework.http.HttpStatus;

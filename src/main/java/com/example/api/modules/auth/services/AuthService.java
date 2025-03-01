@@ -12,6 +12,7 @@ import com.example.api.modules.auth.dtos.SignUpRequest;
 import com.example.api.modules.auth.dtos.SignUpResponse;
 import com.example.api.modules.auth.dtos.VisitorSignUpRequest;
 import com.example.api.modules.auth.entties.Profile;
+import com.example.api.modules.auth.enums.Role;
 import com.example.api.modules.employees.services.EmployeesService;
 import com.example.api.modules.employees.dtos.CreateEmployeeRequest;
 import com.example.api.modules.visitors.services.VisitorsService;
@@ -45,7 +46,7 @@ public class AuthService {
     }
 
     public SignUpResponse signUpVisitor(VisitorSignUpRequest request) {
-        SignUpRequest signUpRequest = new SignUpRequest(request.getEmail(), request.getPassword(), request.getRole());
+        SignUpRequest signUpRequest = new SignUpRequest(request.getEmail(), request.getPassword(), Role.ROLE_VISITOR);
         SignUpResponse signUpResponse = this.signUp(signUpRequest);
 
         CreateVisitorRequest createVisitorRequest = new CreateVisitorRequest(request.getFio(), request.getAge(),
@@ -56,7 +57,7 @@ public class AuthService {
     }
 
     public SignUpResponse signUpEmployee(EmployeeSignUpRequest request) {
-        SignUpRequest signUpRequest = new SignUpRequest(request.getEmail(), request.getPassword(), request.getRole());
+        SignUpRequest signUpRequest = new SignUpRequest(request.getEmail(), request.getPassword(), Role.ROLE_EMPLOYEE);
         SignUpResponse signUpResponse = this.signUp(signUpRequest);
 
         CreateEmployeeRequest createEmployeeRequest = new CreateEmployeeRequest(request.getFio(), request.getPost(),

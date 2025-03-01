@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.example.api.modules.halls.dtos.CreateHallRequest;
 import com.example.api.modules.halls.dtos.SearchHallsRequest;
 import com.example.api.modules.halls.dtos.UpdateHallRequest;
-
 import lombok.RequiredArgsConstructor;
 
 @Service
