@@ -1,0 +1,29 @@
+{
+    "trailingComma": "none",
+    "tabWidth": 4,
+    "printWidth": 120,
+    "semi": true,
+    "singleQuote": false,
+    "jsxSingleQuote": false,
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true,
+    "importOrderCaseInsensitive": true,
+    "importOrderParserPlugins": [
+        "classProperties",
+        "decorators-legacy",
+        "typescript"
+    ],
+    "importOrder": [
+        "<THIRD_PARTY_MODULES>",
+        "@/app/(.*)$",
+        "@/widgets/(.*)$",
+        "@/features/(.*)$",
+        "@/entities/(.*)$",
+        "@/shared/(.*)$",
+        "^@/(.*)$",
+        "^../(.*)",
+        "./(.*)"
+    ]
+}
