@@ -1,80 +1,34 @@
 package org.example.visitors;
 
-import org.example.shared.interfaces.IConsoleDriver;
+import org.example.shared.classes.ConsoleDriver;
 import org.example.shared.utils.ConsoleReader;
 
-public class VisitorsConsoleDriver implements IConsoleDriver {
-    private VisitorsRepository repository = new VisitorsRepository();
-
-    private Long defaultId = 1l;
-
-    public void start() {
-        while (true) {
-            switch (this.getNextChoice()) {
-                case 1:
-                    this.handlePrint();
-                    break;
-                case 2:
-                    this.handleCreate();
-                    break;
-                case 3:
-                    this.handleUpdate();
-                    break;
-                case 4:
-                    this.handleDelete();
-                    break;
-                case 5:
-                    return;
-            }
-        }
+public class VisitorsConsoleDriver extends ConsoleDriver<Visitor> {
+    public VisitorsConsoleDriver() {
+        super.repository = new VisitorsRepository();
     }
 
-    private Integer getNextChoice() {
+    protected Integer getNextChoice() {
         System.out.println("1. Все посетители");
         System.out.println("2. Добавление посетителя");
         System.out.println("3. Обновление посетителя");
         System.out.println("4. Удаление посетителя");
-        System.out.println("5. Выход");
+        System.out.println("0. Выход");
 
         ConsoleReader console = new ConsoleReader();
         return console.readInt("Выбор: ");
     }
 
-    private Visitor input() {
+    protected Visitor input() {
         ConsoleReader console = new ConsoleReader();
         String fio = console.readLine("ФИО: ");
         Integer age = console.readInt("Возраст: ");
 
-        return new Visitor(this.defaultId, fio, age);
+        return new Visitor(fio, age);
     }
 
-    private Long inputId() {
+    protected Long inputId() {
         ConsoleReader console = new ConsoleReader();
         return console.readLong("ID посетителя: ");
-    }
-
-    private void handleCreate() {
-        Visitor visitor = this.input();
-        this.repository.create(visitor);
-    }
-
-    private void handlePrint() {
-        for (Visitor visitor : this.repository.findAll()) {
-            System.out.println(visitor);
-        }
-    }
-
-    private void handleUpdate() {
-        Long id = this.inputId();
-
-        Visitor visitor = this.input();
-        visitor.setId(id);
-
-        this.repository.update(visitor);
-    }
-
-    private void handleDelete() {
-        Long id = this.inputId();
-        this.repository.delete(id);
     }
 }

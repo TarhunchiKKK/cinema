@@ -1,6 +1,9 @@
 package org.example.films;
 
-public class Film {
+import org.example.shared.interfaces.IHaveId;
+import org.example.shared.interfaces.IPrintable;
+
+public class Film implements IHaveId, IPrintable {
     private Long id;
 
     private String title;
@@ -8,6 +11,12 @@ public class Film {
     private Integer year;
 
     private String country;
+
+    public Film(String title, Integer year, String country) {
+        this.title = title;
+        this.year = year;
+        this.country = country;
+    }
 
     public Film(Long id, String title, Integer year, String country) {
         this.id = id;
@@ -46,5 +55,10 @@ public class Film {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public void print() {
+        System.out.printf("%4d %15s %4d %s\n", this.id, this.title, this.year, this.country);
+
     }
 }

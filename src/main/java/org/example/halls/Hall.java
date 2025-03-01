@@ -1,11 +1,19 @@
 package org.example.halls;
 
-public class Hall {
+import org.example.shared.interfaces.IHaveId;
+import org.example.shared.interfaces.IPrintable;
+
+public class Hall implements IHaveId, IPrintable {
     private Long id;
 
     private String type;
 
     private Integer seatsCount;
+
+    public Hall(String type, Integer seatsCount) {
+        this.type = type;
+        this.seatsCount = seatsCount;
+    }
 
     public Hall(Long id, String type, Integer seatsCount) {
         this.id = id;
@@ -35,5 +43,9 @@ public class Hall {
 
     public void setSeatsCount(Integer seatsCount) {
         this.seatsCount = seatsCount;
+    }
+
+    public void print() {
+        System.out.printf("%4d %10s %d\n", this.id, this.type, this.seatsCount);
     }
 }

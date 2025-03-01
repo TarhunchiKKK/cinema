@@ -2,7 +2,10 @@ package org.example.seanses;
 
 import java.util.Date;
 
-public class Seans {
+import org.example.shared.interfaces.IHaveId;
+import org.example.shared.interfaces.IPrintable;
+
+public class Seans implements IHaveId, IPrintable {
     private Long id;
 
     private Date date;
@@ -10,6 +13,12 @@ public class Seans {
     private Float price;
 
     private Integer duration;
+
+    public Seans(Date date, Float price, Integer duration) {
+        this.date = date;
+        this.price = price;
+        this.duration = duration;
+    }
 
     public Seans(Long id, Date date, Float price, Integer duration) {
         this.id = id;
@@ -51,5 +60,9 @@ public class Seans {
 
     public void setDuration(Integer duration) {
         this.duration = duration;
+    }
+
+    public void print() {
+        System.out.printf("%4d %20s %4d %f\n", this.id, this.date.toString(), this.duration, this.price);
     }
 }

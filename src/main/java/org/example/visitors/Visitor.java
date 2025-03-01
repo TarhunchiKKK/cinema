@@ -1,11 +1,19 @@
 package org.example.visitors;
 
-public class Visitor {
+import org.example.shared.interfaces.IHaveId;
+import org.example.shared.interfaces.IPrintable;
+
+public class Visitor implements IHaveId, IPrintable {
     private Long id;
 
     private String fio;
 
     private Integer age;
+
+    public Visitor(String fio, Integer age) {
+        this.fio = fio;
+        this.age = age;
+    }
 
     public Visitor(Long id, String fio, Integer age) {
         this.id = id;
@@ -35,5 +43,9 @@ public class Visitor {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public void print() {
+        System.out.printf("%4d %30s %d\n", this.id, this.fio, this.age);
     }
 }

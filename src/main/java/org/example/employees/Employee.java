@@ -1,6 +1,9 @@
 package org.example.employees;
 
-public class Employee {
+import org.example.shared.interfaces.IHaveId;
+import org.example.shared.interfaces.IPrintable;
+
+public class Employee implements IHaveId, IPrintable {
     private Long id;
 
     private String fio;
@@ -8,6 +11,12 @@ public class Employee {
     private String post;
 
     private Float experience;
+
+    public Employee(String fio, String post, Float experience) {
+        this.fio = fio;
+        this.post = post;
+        this.experience = experience;
+    }
 
     public Employee(Long id, String fio, String post, Float experience) {
         this.id = id;
@@ -46,5 +55,9 @@ public class Employee {
 
     public void setExperience(Float experience) {
         this.experience = experience;
+    }
+
+    public void print() {
+        System.out.printf("%4d %30s %10s %f\n", this.id, this.fio, this.post, this.experience);
     }
 }
