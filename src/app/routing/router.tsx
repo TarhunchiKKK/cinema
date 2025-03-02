@@ -1,23 +1,30 @@
+import { ProtectedRoute } from "@/features/auth";
+import { AuthLayout, SignInPage, SignUpPage } from "@/pages";
 import { ROUTES } from "@/shared/constants";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
     {
         path: ROUTES.HOME,
-        element: <h1>Home</h1>,
+        element: (
+            <ProtectedRoute redirectRoute={ROUTES.AUTH}>
+                <h1>Home</h1>
+            </ProtectedRoute>
+        ),
         children: []
     },
     {
         path: ROUTES.AUTH,
-        element: <h1>Authentication</h1>,
+        element: <AuthLayout />,
         children: [
             {
-                path: ROUTES.SIGN_IN,
-                element: <h2>Sign In</h2>
+                path: ROUTES.SIGN_UP,
+                index: true,
+                element: <SignUpPage />
             },
             {
-                path: ROUTES.SIGN_UP,
-                element: <h2>Sign Up</h2>
+                path: ROUTES.SIGN_IN,
+                element: <SignInPage />
             }
         ]
     }

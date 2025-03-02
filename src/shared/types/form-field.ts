@@ -7,5 +7,5 @@ export type TFormField<T> = {
 
     description?: string;
 
-    type: "text" | "email" | "password";
+    type: "text" | "email" | "password" | "number";
 };
