@@ -34,3 +34,7 @@ export const QUERY_URLS = {
         TOGGLE_SEANS: `${ENV.API_URL}/employees/toggle-seans`
     }
 };
+
+export const QUERY_KEYS = {
+    FILMS: ["films"]
+};

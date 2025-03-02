@@ -4,13 +4,18 @@ import { getProfile, signIn, signUpEmployee, signUpVisitor } from "@/entities/pr
 import { localStorageService } from "@/shared/utils";
 import { TSignUpEmployeeValidationErrors, TSignUpVisitorValidationErrors, TSignInValidationErrors } from "./types";
 import { AxiosError } from "axios";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "@/shared/constants";
 
 export function useSignUpEmployee() {
+    const navigate = useNavigate();
+
     const { mutate, isPending, error } = useMutation({
         mutationKey: QUERY_KEY,
         mutationFn: signUpEmployee,
         onSuccess: response => {
             localStorageService.token.set(response.token);
+            navigate(ROUTES.AFISHA);
         }
     });
 
@@ -22,11 +27,14 @@ export function useSignUpEmployee() {
 }
 
 export function useSignUpVisitor() {
+    const navigate = useNavigate();
+
     const { mutate, isPending, error } = useMutation({
         mutationKey: QUERY_KEY,
         mutationFn: signUpVisitor,
         onSuccess: response => {
             localStorageService.token.set(response.token);
+            navigate(ROUTES.AFISHA);
         }
     });
 
@@ -38,11 +46,14 @@ export function useSignUpVisitor() {
 }
 
 export function useSignIn() {
+    const navigate = useNavigate();
+
     const { mutate, isPending, error } = useMutation({
         mutationKey: QUERY_KEY,
         mutationFn: signIn,
         onSuccess: response => {
             localStorageService.token.set(response.token);
+            navigate(ROUTES.AFISHA);
         }
     });
 

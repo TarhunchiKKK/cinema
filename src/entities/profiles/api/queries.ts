@@ -1,5 +1,5 @@
 import axios from "axios";
-import { TSignInDto, TSignInResponse, TSignUpEmployeeDto, TSignUpResponse, TSignUpVisitorDto } from "./dtos";
+import { TSignInDto, TSignInResponse, TSignUpEmployeeDto, TSignUpResponse, TSignUpVisitorDto } from "./types";
 import { QUERY_URLS } from "@/shared/constants";
 import { TProfile } from "../types";
 import { QueryHeadersBuilder } from "@/shared/utils";

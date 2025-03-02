@@ -1,9 +1,7 @@
-import { createContext } from "react";
-import { TThemeProviderProps, TThemeProviderState } from "./types";
-import { initialState } from "./constants";
+import { TThemeProviderProps } from "./types";
+import { initialState, ThemeProviderContext } from "./constants";
 import { Theme } from "../../types";
-
-export const ThemeProviderContext = createContext<TThemeProviderState>(initialState);
+import { useEffect } from "react";
 
 export function ThemeProvider({ children }: TThemeProviderProps) {
     const setTheme = (theme: Theme) => {
@@ -11,10 +9,13 @@ export function ThemeProvider({ children }: TThemeProviderProps) {
         window.document.documentElement.classList.add(theme);
     };
 
-    const value = {
-        theme: initialState.theme,
-        setTheme
-    };
+    useEffect(() => {
+        setTheme(initialState.theme);
+    }, []);
 
-    return <ThemeProviderContext.Provider value={value}>{children}</ThemeProviderContext.Provider>;
+    return (
+        <ThemeProviderContext.Provider value={{ theme: initialState.theme, setTheme }}>
+            {children}
+        </ThemeProviderContext.Provider>
+    );
 }
