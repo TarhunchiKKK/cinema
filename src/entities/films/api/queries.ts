@@ -14,8 +14,8 @@ export async function createFilm(dto: TCreateFilmDto, token: string) {
 
 export async function findAllFilms(args: TSearchFilmsQueryArgs) {
     const response = await axios.get<TFilm[]>(QUERY_URLS.FILMS.FIND_ALL, {
-        params: args,
         headers: new QueryHeadersBuilder().get(),
+        params: args,
         data: args
     });
 

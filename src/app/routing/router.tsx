@@ -1,6 +1,6 @@
-import { AfishaPage, AuthLayout, RootLayout, SignInPage, SignUpPage } from "@/pages";
-import { ROUTES } from "@/shared/constants";
 import { createBrowserRouter } from "react-router-dom";
+import { ROUTES } from "@/shared/constants";
+import { AfishaPage, AuthLayout, HallsPage, RootLayout, SignInPage, SignUpPage } from "@/pages";
 
 export const router = createBrowserRouter([
     {
@@ -10,6 +10,10 @@ export const router = createBrowserRouter([
             {
                 path: ROUTES.AFISHA,
                 element: <AfishaPage />
+            },
+            {
+                path: ROUTES.HALLS,
+                element: <HallsPage />
             }
         ]
     },

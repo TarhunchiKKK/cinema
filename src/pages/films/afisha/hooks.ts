@@ -1,5 +1,5 @@
 import { findAllFilms, TSearchFilmsQueryArgs } from "@/entities/films";
-import { QUERY_KEYS } from "@/shared/constants/query";
+import { QUERY_KEYS } from "@/shared/constants";
 import { useQuery } from "@tanstack/react-query";
 
 export function useFilms(queryArgs: TSearchFilmsQueryArgs) {

@@ -36,5 +36,6 @@ export const QUERY_URLS = {
 };
 
 export const QUERY_KEYS = {
-    FILMS: ["films"]
+    FILMS: ["films"],
+    HALLS: ["halls"]
 };
