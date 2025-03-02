@@ -12,5 +12,17 @@ export const localStorageService = {
         remove: () => {
             localStorage.removeItem(localStorageService.token.key);
         }
+    },
+    theme: {
+        key: ENV.LOCAL_STORAGE_THEME_KEY,
+        get: () => {
+            return localStorage.getItem(localStorageService.theme.key);
+        },
+        set: (theme: string) => {
+            localStorage.setItem(localStorageService.theme.key, theme);
+        },
+        remove: () => {
+            localStorage.removeItem(localStorageService.theme.key);
+        }
     }
 };
