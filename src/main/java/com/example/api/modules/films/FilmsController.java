@@ -41,6 +41,11 @@ public class FilmsController {
         return new ResponseEntity<Film>(this.filmsService.create(request), HttpStatus.CREATED);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Film> findById(@PathVariable("id") Long id) {
+        return new ResponseEntity<Film>(this.filmsService.findById(id), HttpStatus.OK);
+    }
+
     @GetMapping
     public ResponseEntity<List<Film>> findAll(@RequestParam(value = "country", required = false) String country) {
         SearchFilmsRequest request = new SearchFilmsRequest(country);

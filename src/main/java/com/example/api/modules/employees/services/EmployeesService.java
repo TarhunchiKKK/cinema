@@ -27,6 +27,10 @@ public class EmployeesService {
                 new Employee(request.getFio(), request.getPost(), request.getExperience(), request.getProfile()));
     }
 
+    public Employee findByProfileId(Long profileId) {
+        return this.employeesRepository.findByProfileId(profileId);
+    }
+
     public void toggleSeans(ToggleEmployeeSeansRequest request) {
         Seans seans = this.seansesService.findOneById(request.getSeansId());
 

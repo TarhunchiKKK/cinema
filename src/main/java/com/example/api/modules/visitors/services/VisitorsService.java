@@ -1,5 +1,6 @@
 package com.example.api.modules.visitors.services;
 
+import com.example.api.modules.employees.entities.Employee;
 import com.example.api.modules.visitors.entities.Visitor;
 import com.example.api.modules.visitors.repositories.VisitorsRepository;
 import com.example.api.modules.visitors.utils.SearchVisitorByProfileQueryBuilder;
@@ -26,6 +27,10 @@ public class VisitorsService {
     public Visitor create(CreateVisitorRequest request) {
         return this.visitorsRepository.save(
                 new Visitor(request.getFio(), request.getAge(), request.getProfile()));
+    }
+
+    public Visitor findByProfileId(Long profileId) {
+        return this.visitorsRepository.findByProfileId(profileId);
     }
 
     public void toggleSeans(ToggleVisitorSeansRequest request) {
