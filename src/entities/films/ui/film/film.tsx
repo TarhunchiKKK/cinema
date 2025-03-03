@@ -1,6 +1,6 @@
 import { Card, CardContent, CardFooter } from "@/shared/ui";
 import { TFilmProps } from "./types";
-import { FilmPlaceholder } from "@/assets";
+import { FilmPlaceholder } from "@/shared/assets";
 
 export function Film({ film }: TFilmProps) {
     return (

@@ -2,7 +2,7 @@ import { TSignUpEmployeeDto } from "@/entities/profiles";
 import { useForm } from "react-hook-form";
 import { defaultValues, formFields } from "./constants";
 import { useSignUpEmployee } from "../../api";
-import { AuthWrapper } from "../auth-wrepper";
+import { AuthWrapper } from "../auth-wrapper";
 import { ROUTES } from "@/shared/constants";
 import { Button, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, Input } from "@/shared/ui";
 

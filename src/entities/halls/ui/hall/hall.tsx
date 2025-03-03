@@ -1,6 +1,6 @@
 import { Card, CardContent, CardFooter } from "@/shared/ui";
 import { THallProps } from "./types";
-import { HallPlaceholder } from "@/assets";
+import { HallPlaceholder } from "@/shared/assets";
 
 export function Hall({ hall }: THallProps) {
     return (

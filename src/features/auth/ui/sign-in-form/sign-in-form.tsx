@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { defaultvalues, formFields } from "./constants";
 import { FormField, Form, FormItem, FormLabel, FormControl, Input, FormDescription, Button } from "@/shared/ui";
-import { AuthWrapper } from "../auth-wrepper";
+import { AuthWrapper } from "../auth-wrapper";
 import { TSignInDto } from "@/entities/profiles";
 import { ROUTES } from "@/shared/constants";
 import { useSignIn } from "../../api";
