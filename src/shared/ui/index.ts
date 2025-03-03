@@ -8,3 +8,4 @@ export * from "./dropdown-menu";
 export * from "./grid-container";
 export * from "./navigation-menu";
 export * from "./dialog";
+export * from "./checkbox";

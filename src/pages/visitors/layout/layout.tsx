@@ -1,10 +1,11 @@
-import { TProfile, useProfileStore } from "@/entities/profiles";
+import { useProfileStore } from "@/entities/profiles";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/shared/ui";
 import { NavLink, Outlet } from "react-router-dom";
 import { getNavigationLinks } from "./constants";
+import { TVisitor } from "@/entities/visitors";
 
 export function VisitorLayout() {
-    const profile = useProfileStore(state => state.profile) as TProfile;
+    const profile = useProfileStore(state => state.profile) as TVisitor;
 
     return (
         <>

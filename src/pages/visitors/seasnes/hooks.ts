@@ -8,7 +8,7 @@ export function useVisitorSeanses(visitorId: TId) {
     const token = localStorageService.token.get();
 
     const { data, isPending } = useQuery({
-        queryKey: [...QUERY_KEYS.SEANSES.VISITOR, token],
+        queryKey: [...QUERY_KEYS.SEANSES, visitorId],
         queryFn: () => findSeansesByVisitor(visitorId, token)
     });
 

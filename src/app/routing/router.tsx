@@ -5,6 +5,7 @@ import {
     AuthLayout,
     EmployeeLayout,
     EmployeeSeansesPage,
+    FilmPage,
     HallsPage,
     RootLayout,
     SignInPage,
@@ -18,8 +19,12 @@ export const router = createBrowserRouter([
         element: <RootLayout />,
         children: [
             {
-                path: ROUTES.AFISHA,
+                path: ROUTES.FILMS.AFISHA,
                 element: <AfishaPage />
+            },
+            {
+                path: ROUTES.FILMS.ONE_FILM.PATTERN,
+                element: <FilmPage />
             }
         ]
     },

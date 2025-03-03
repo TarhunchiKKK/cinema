@@ -12,6 +12,11 @@ export async function createFilm(dto: TCreateFilmDto, token: string | null) {
     return response.data;
 }
 
+export async function findFilmById(filmId: TId) {
+    const response = await axios.get<TFilm>(QUERY_URLS.FILMS.FIND_ONE_BY_ID(filmId));
+    return response.data;
+}
+
 export async function findAllFilms(args: TSearchFilmsQueryArgs) {
     const response = await axios.get<TFilm[]>(QUERY_URLS.FILMS.FIND_ALL, {
         headers: new QueryHeadersBuilder().get(),

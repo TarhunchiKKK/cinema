@@ -2,7 +2,13 @@ import { TId } from "../types";
 
 export const ROUTES = {
     INDEX: "/",
-    AFISHA: "/",
+    FILMS: {
+        AFISHA: "/",
+        ONE_FILM: {
+            PATTERN: "/films/:filmId",
+            CREATE: (filmId: TId) => `/films/${filmId}`
+        }
+    },
     AUTH: {
         INDEX: "/auth",
         SIGN_UP: "/auth/sign-up",

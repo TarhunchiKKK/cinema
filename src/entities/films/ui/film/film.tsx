@@ -1,12 +1,20 @@
 import { Card, CardContent, CardFooter } from "@/shared/ui";
 import { TFilmProps } from "./types";
 import { FilmPlaceholder } from "@/shared/assets";
+import { NavLink } from "react-router-dom";
+import { ROUTES } from "@/shared/constants";
 
-export function Film({ film }: TFilmProps) {
+export function Film({ film, disableLink }: TFilmProps) {
     return (
         <Card>
             <CardContent className="rounded-sm mb-4">
-                <img src={FilmPlaceholder} alt={film.title} />
+                {disableLink ? (
+                    <img src={FilmPlaceholder} alt={film.title} />
+                ) : (
+                    <NavLink to={ROUTES.FILMS.ONE_FILM.CREATE(film.id)}>
+                        <img src={FilmPlaceholder} alt={film.title} />
+                    </NavLink>
+                )}
             </CardContent>
 
             <CardFooter className="block">

@@ -5,7 +5,7 @@ import { TSignUpEmployeeValidationErrors, TSignUpVisitorValidationErrors, TSignI
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { QUERY_KEYS, ROUTES } from "@/shared/constants";
-import { getSignInRedirectRoute } from "./helpers";
+import { getProfileData, getSignInRedirectRoute } from "./helpers";
 
 export function useSignUpEmployee() {
     const navigate = useNavigate();
@@ -17,8 +17,11 @@ export function useSignUpEmployee() {
         mutationFn: signUpEmployee,
         onSuccess: response => {
             localStorageService.token.set(response.token);
-            setProfile(response.profile);
             navigate(ROUTES.EMPLOYEE.INDEX.CREATE(response.profile.id));
+
+            getProfileData(response).then(profileData => {
+                setProfile(profileData);
+            });
         }
     });
 
@@ -39,8 +42,11 @@ export function useSignUpVisitor() {
         mutationFn: signUpVisitor,
         onSuccess: response => {
             localStorageService.token.set(response.token);
-            setProfile(response.profile);
             navigate(ROUTES.VISITOR.INDEX.CREATE(response.profile.id));
+
+            getProfileData(response).then(profileData => {
+                setProfile(profileData);
+            });
         }
     });
 
@@ -61,8 +67,11 @@ export function useSignIn() {
         mutationFn: signIn,
         onSuccess: response => {
             localStorageService.token.set(response.token);
-            setProfile(response.profile);
             navigate(getSignInRedirectRoute(response));
+
+            getProfileData(response).then(profileData => {
+                setProfile(profileData);
+            });
         }
     });
 
@@ -88,7 +97,9 @@ export function useGetProfile() {
 
                 const profile = await getProfile(token);
 
-                setProfile(profile);
+                getProfileData({ profile, token }).then(profileData => {
+                    setProfile(profileData);
+                });
 
                 return profile;
             } catch (_: unknown) {

@@ -8,7 +8,7 @@ export function useEmployeeSeanses(employeeId: TId) {
     const token = localStorageService.token.get();
 
     const { data, isPending } = useQuery({
-        queryKey: [...QUERY_KEYS.SEANSES.EMPLOYEE, token],
+        queryKey: [...QUERY_KEYS.SEANSES, employeeId],
         queryFn: () => findSeansesByEmployee(employeeId, token)
     });
 

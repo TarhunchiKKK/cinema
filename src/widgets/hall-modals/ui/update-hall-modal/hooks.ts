@@ -11,10 +11,10 @@ export function useUpdateHall(hallId: TId) {
     const queryClient = useQueryClient();
 
     const { mutate, isPending, error } = useMutation({
-        mutationKey: QUERY_KEYS.FILMS,
+        mutationKey: [...QUERY_KEYS.HALLS, hallId],
         mutationFn: (dto: TUpdateHallDto) => updateHall(hallId, dto, token),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: QUERY_KEYS.FILMS });
+            queryClient.invalidateQueries({ queryKey: QUERY_KEYS.HALLS });
         }
     });
 

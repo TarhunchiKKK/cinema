@@ -1,3 +1,4 @@
+import { useProfileStore } from "@/entities/profiles";
 import { ROUTES } from "@/shared/constants";
 import { Button } from "@/shared/ui";
 import { localStorageService } from "@/shared/utils";
@@ -8,7 +9,10 @@ export function AuthButton() {
 
     const navigate = useNavigate();
 
+    const resetProfile = useProfileStore(state => state.resetProfile);
+
     const handleClick = () => {
+        resetProfile();
         if (hasToken) {
             localStorageService.token.remove();
             navigate(ROUTES.INDEX);

@@ -11,7 +11,7 @@ export function useUpdateFilm(filmId: TId) {
     const queryClient = useQueryClient();
 
     const { mutate, isPending, error } = useMutation({
-        mutationKey: QUERY_KEYS.FILMS,
+        mutationKey: [...QUERY_KEYS.FILMS, filmId],
         mutationFn: (dto: TUpdateFilmDto) => updateFilm(filmId, dto, token),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: QUERY_KEYS.FILMS });

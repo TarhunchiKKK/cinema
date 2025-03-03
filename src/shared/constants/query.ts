@@ -10,6 +10,7 @@ export const QUERY_URLS = {
     },
     FILMS: {
         CREATE: `${ENV.API_URL}/films`,
+        FIND_ONE_BY_ID: (filmId: TId) => `${ENV.API_URL}/films/${filmId}`,
         FIND_ALL: `${ENV.API_URL}/films`,
         UPDATE: (filmId: TId) => `${ENV.API_URL}/films/${filmId}`,
         DELETE: (filmId: TId) => `${ENV.API_URL}/films/${filmId}`
@@ -28,9 +29,11 @@ export const QUERY_URLS = {
         DELETE: (hallId: TId) => `${ENV.API_URL}/halls/${hallId}`
     },
     VISITORS: {
+        FIND_ONE_BY_ID: (visitorId: TId) => `${ENV.API_URL}/visitors/${visitorId}`,
         TOGGLE_SEANS: `${ENV.API_URL}/visitors/toggle-seans`
     },
     EMPLOYEES: {
+        FIND_ONE_BY_ID: (employeeId: TId) => `${ENV.API_URL}/employees/${employeeId}`,
         TOGGLE_SEANS: `${ENV.API_URL}/employees/toggle-seans`
     }
 };
@@ -39,8 +42,5 @@ export const QUERY_KEYS = {
     AUTH: ["auth"],
     FILMS: ["films"],
     HALLS: ["halls"],
-    SEANSES: {
-        VISITOR: ["visitor-seanses"],
-        EMPLOYEE: ["employee-seanses"]
-    }
+    SEANSES: ["film-seanses"]
 };
