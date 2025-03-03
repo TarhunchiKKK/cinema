@@ -1,3 +1,5 @@
+import { Role } from "./role";
+
 export type TProfile = {
     id: string;
 
@@ -5,5 +7,5 @@ export type TProfile = {
 
     password: string;
 
-    role: string;
+    role: Role;
 };

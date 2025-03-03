@@ -11,9 +11,9 @@ export function AuthButton() {
     const handleClick = () => {
         if (hasToken) {
             localStorageService.token.remove();
-            navigate(ROUTES.AFISHA);
+            navigate(ROUTES.INDEX);
         } else {
-            navigate(ROUTES.SIGN_UP);
+            navigate(ROUTES.AUTH.SIGN_IN);
         }
     };
 

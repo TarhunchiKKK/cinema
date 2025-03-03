@@ -22,7 +22,7 @@ export function SignInForm() {
             heading="Вход"
             description="Чтобы войти на сайт введите ваше имя и пароль"
             backButtonLabel="Нет аккаунта? Создать"
-            backButtonHref={ROUTES.SIGN_UP}
+            backButtonHref={ROUTES.AUTH.SIGN_UP}
         >
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">

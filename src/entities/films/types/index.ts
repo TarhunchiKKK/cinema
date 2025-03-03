@@ -1,1 +1,1 @@
-export { TFilm } from "./film";
+export type { TFilm } from "./film";

@@ -9,9 +9,11 @@ export function Film({ film }: TFilmProps) {
                 <img src={FilmPlaceholder} alt={film.title} />
             </CardContent>
 
-            <CardFooter>
+            <CardFooter className="block">
                 <h4 className="font-bold text-base leading-6 text-white">{film.title}</h4>
+
                 <p className="font-medium text-base leading-6 text-[#AFB2B6]">{film.year}</p>
+
                 <p className="font-medium text-base leading-6 text-[#AFB2B6] capitalize">{film.country}</p>
             </CardFooter>
         </Card>

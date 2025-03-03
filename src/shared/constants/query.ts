@@ -36,6 +36,11 @@ export const QUERY_URLS = {
 };
 
 export const QUERY_KEYS = {
+    AUTH: ["auth"],
     FILMS: ["films"],
-    HALLS: ["halls"]
+    HALLS: ["halls"],
+    SEANSES: {
+        VISITOR: ["visitor-seanses"],
+        EMPLOYEE: ["employee-seanses"]
+    }
 };

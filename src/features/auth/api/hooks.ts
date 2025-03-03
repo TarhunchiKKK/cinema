@@ -1,21 +1,24 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { QUERY_KEY } from "./constants";
-import { getProfile, signIn, signUpEmployee, signUpVisitor } from "@/entities/profiles";
+import { getProfile, signIn, signUpEmployee, signUpVisitor, useProfileStore } from "@/entities/profiles";
 import { localStorageService } from "@/shared/utils";
 import { TSignUpEmployeeValidationErrors, TSignUpVisitorValidationErrors, TSignInValidationErrors } from "./types";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "@/shared/constants";
+import { QUERY_KEYS, ROUTES } from "@/shared/constants";
+import { getSignInRedirectRoute } from "./helpers";
 
 export function useSignUpEmployee() {
     const navigate = useNavigate();
 
+    const setProfile = useProfileStore(state => state.setProfile);
+
     const { mutate, isPending, error } = useMutation({
-        mutationKey: QUERY_KEY,
+        mutationKey: QUERY_KEYS.AUTH,
         mutationFn: signUpEmployee,
         onSuccess: response => {
             localStorageService.token.set(response.token);
-            navigate(ROUTES.AFISHA);
+            setProfile(response.profile);
+            navigate(ROUTES.EMPLOYEE.INDEX.CREATE(response.profile.id));
         }
     });
 
@@ -29,12 +32,15 @@ export function useSignUpEmployee() {
 export function useSignUpVisitor() {
     const navigate = useNavigate();
 
+    const setProfile = useProfileStore(state => state.setProfile);
+
     const { mutate, isPending, error } = useMutation({
-        mutationKey: QUERY_KEY,
+        mutationKey: QUERY_KEYS.AUTH,
         mutationFn: signUpVisitor,
         onSuccess: response => {
             localStorageService.token.set(response.token);
-            navigate(ROUTES.AFISHA);
+            setProfile(response.profile);
+            navigate(ROUTES.VISITOR.INDEX.CREATE(response.profile.id));
         }
     });
 
@@ -48,12 +54,15 @@ export function useSignUpVisitor() {
 export function useSignIn() {
     const navigate = useNavigate();
 
+    const setProfile = useProfileStore(state => state.setProfile);
+
     const { mutate, isPending, error } = useMutation({
-        mutationKey: QUERY_KEY,
+        mutationKey: QUERY_KEYS.AUTH,
         mutationFn: signIn,
         onSuccess: response => {
             localStorageService.token.set(response.token);
-            navigate(ROUTES.AFISHA);
+            setProfile(response.profile);
+            navigate(getSignInRedirectRoute(response));
         }
     });
 
@@ -65,8 +74,10 @@ export function useSignIn() {
 }
 
 export function useGetProfile() {
+    const setProfile = useProfileStore(state => state.setProfile);
+
     const { isPending, error } = useQuery({
-        queryKey: QUERY_KEY,
+        queryKey: QUERY_KEYS.AUTH,
         queryFn: async () => {
             try {
                 const token = localStorageService.token.get();
@@ -75,7 +86,11 @@ export function useGetProfile() {
                     throw new Error("No token found in local storage");
                 }
 
-                return getProfile(token);
+                const profile = await getProfile(token);
+
+                setProfile(profile);
+
+                return profile;
             } catch (_: unknown) {
                 localStorageService.token.remove();
             }

@@ -22,7 +22,7 @@ export function SignUpEmployeeForm() {
             heading="Регистрация"
             description="Введите необходимые поля для регистрации"
             backButtonLabel="Уже есть аккаунт? Войти"
-            backButtonHref={ROUTES.SIGN_IN}
+            backButtonHref={ROUTES.AUTH.SIGN_IN}
         >
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
