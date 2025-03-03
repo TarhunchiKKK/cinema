@@ -10,8 +10,11 @@ import {
     RootLayout,
     SignInPage,
     SignUpPage,
-    VisitorLayout
+    VisitorLayout,
+    VisitorSeansesPage
 } from "@/pages";
+import { ProtectedRoute } from "@/features/roles";
+import { Role } from "@/entities/profiles";
 
 export const router = createBrowserRouter([
     {
@@ -49,15 +52,27 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: ROUTES.EMPLOYEE.FILMS.PATTERN,
-                element: <AfishaPage />
+                element: (
+                    <ProtectedRoute requiredRoles={[Role.ROLE_EMPLOYEE]} redirectRoute={ROUTES.INDEX}>
+                        <AfishaPage />
+                    </ProtectedRoute>
+                )
             },
             {
                 path: ROUTES.EMPLOYEE.SEANSES.PATTERN,
-                element: <EmployeeSeansesPage />
+                element: (
+                    <ProtectedRoute requiredRoles={[Role.ROLE_EMPLOYEE]} redirectRoute={ROUTES.INDEX}>
+                        <EmployeeSeansesPage />
+                    </ProtectedRoute>
+                )
             },
             {
                 path: ROUTES.EMPLOYEE.HALLS.PATTERN,
-                element: <HallsPage />
+                element: (
+                    <ProtectedRoute requiredRoles={[Role.ROLE_EMPLOYEE]} redirectRoute={ROUTES.INDEX}>
+                        <HallsPage />
+                    </ProtectedRoute>
+                )
             }
         ]
     },
@@ -67,11 +82,19 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: ROUTES.VISITOR.FILMS.PATTERN,
-                element: <AfishaPage />
+                element: (
+                    <ProtectedRoute requiredRoles={[Role.ROLE_VISITOR]} redirectRoute={ROUTES.INDEX}>
+                        <AfishaPage />
+                    </ProtectedRoute>
+                )
             },
             {
                 path: ROUTES.VISITOR.SEANSES.PATTERN,
-                element: <VisitorLayout />
+                element: (
+                    <ProtectedRoute requiredRoles={[Role.ROLE_VISITOR]} redirectRoute={ROUTES.INDEX}>
+                        <VisitorSeansesPage />
+                    </ProtectedRoute>
+                )
             }
         ]
     }

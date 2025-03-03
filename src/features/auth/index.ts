@@ -1,1 +1,1 @@
-export { SignUpEmployeeForm, SignUpVisitorForm, SignInForm, ProtectedRoute } from "./ui";
+export { SignUpEmployeeForm, SignUpVisitorForm, SignInForm } from "./ui";

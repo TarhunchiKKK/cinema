@@ -1,6 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui";
 import { TSeansListItemProps } from "./types";
 import { ToggleSeansCheckbox } from "../toggle-seans-checkbox";
+import { ProtectedItem } from "@/features/roles";
+import { Role } from "@/entities/profiles";
 
 export function SeansListItem({ seans }: TSeansListItemProps) {
     return (
@@ -14,9 +16,11 @@ export function SeansListItem({ seans }: TSeansListItemProps) {
                 </CardDescription>
             </CardHeader>
 
-            <CardContent>
-                <ToggleSeansCheckbox seans={seans} />
-            </CardContent>
+            <ProtectedItem requiredRoles={[Role.ROLE_EMPLOYEE, Role.ROLE_VISITOR]}>
+                <CardContent>
+                    <ToggleSeansCheckbox seans={seans} />
+                </CardContent>
+            </ProtectedItem>
         </Card>
     );
 }

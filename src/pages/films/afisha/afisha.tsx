@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useFilms } from "./hooks";
 import { GridContainer } from "@/shared/ui";
 import { CountriesDropdown, Film } from "@/entities/films";
+import { ProtectedItem } from "@/features/roles";
+import { Role } from "@/entities/profiles";
+import { CreateFilmModal } from "@/widgets/film-modals";
 
 export function AfishaPage() {
     const [country, setCountry] = useState<string | undefined>();
@@ -10,7 +13,11 @@ export function AfishaPage() {
 
     return (
         <>
-            <div className="flex flex-row justify-end items-center mb-4">
+            <div className="flex flex-row justify-between items-center mb-4">
+                <ProtectedItem requiredRoles={[Role.ROLE_EMPLOYEE]}>
+                    <CreateFilmModal />
+                </ProtectedItem>
+
                 <CountriesDropdown value={country} onChange={setCountry} />
             </div>
 
