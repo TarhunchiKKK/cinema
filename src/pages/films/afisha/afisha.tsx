@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useFilms } from "./hooks";
 import { GridContainer } from "@/shared/ui";
 import { CountriesDropdown, Film } from "@/entities/films";
 import { ProtectedItem } from "@/features/roles";
 import { Role } from "@/entities/profiles";
 import { CreateFilmModal } from "@/widgets/film-modals";
+import { useFilms } from "./hooks";
 
 export function AfishaPage() {
     const [country, setCountry] = useState<string | undefined>();

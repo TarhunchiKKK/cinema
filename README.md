@@ -16,3 +16,59 @@
 | Создание страниц                                       | 1.5           | 2              | 1.5                | 1.58  | 1.7  |
 | Настройка роутинга                                     | 0.5           | 0.8            | 0.5                | 0.55  | 0.5  |
 | Итого                                                  |               |                |                    | 15.27 | 14.6 |
+
+## UI
+
+### Афиша
+
+<img src="./readme/afisha.png" />
+
+### Один фильм
+
+<img src="./readme/film-page.png"  />
+
+### Авторизация
+
+#### Вход
+
+<img src="./readme/sign-in.png" />
+
+<img src="./readme/sign-in-light.png" />
+
+#### Регистрация
+
+<img src="./readme/sign-up-visitor.png" />
+
+<img src="./readme/sign-up-employee.png" />
+
+### Пользователь
+
+#### Все фильмы отображаются
+
+<img src="./readme/visitor-films.png"  />
+
+#### Только его сеансы
+
+<img src="./readme/visitor-seanses.png" />
+
+### Сотрудник
+
+Отличается от посетителя наличейм вкладки с залами и кнопками создания фильма/сеанса/зала.
+
+#### Все фильмы
+
+<img src="./readme/employee-films.png"  />
+
+#### Создание фильма
+
+<img src="./readme/create-film.png"  />
+
+#### Сеансы аналогично фильмам
+
+#### Залы
+
+<img src="./readme/halls.png" />
+
+#### Создание зала
+
+<img src="./readme/create-hall.png" />

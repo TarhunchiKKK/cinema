@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useHalls } from "./hooks";
 import { Hall, HallTypesDropdown } from "@/entities/halls/ui";
 import { GridContainer } from "@/shared/ui";
+import { CreateHallModal } from "@/widgets/hall-modals";
+import { ProtectedItem } from "@/features/roles";
+import { Role } from "@/entities/profiles";
 
 export function HallsPage() {
     const [type, setType] = useState<string | undefined>();
@@ -10,8 +13,12 @@ export function HallsPage() {
 
     return (
         <>
-            <div className="flex flex-row justify-end items-center mb-4">
+            <div className="flex flex-row-reverse justify-between items-center mb-4">
                 <HallTypesDropdown value={type} onChange={setType} />
+
+                <ProtectedItem requiredRoles={[Role.ROLE_EMPLOYEE]}>
+                    <CreateHallModal />
+                </ProtectedItem>
             </div>
 
             <GridContainer>
